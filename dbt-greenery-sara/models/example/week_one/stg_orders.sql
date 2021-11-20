@@ -11,8 +11,8 @@ with orders_source as (
 
 , renamed_orders as (
     select 
-    id                          as user_id
-    , order_id
+    id                          as id
+    , order_id                  as order_id
     , user_id                   as user_guid
     , promo_id
     , address_id                as address_guid
