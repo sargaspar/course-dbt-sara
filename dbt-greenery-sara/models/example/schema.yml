@@ -40,6 +40,9 @@ models:
         tests:
           - unique
           - not_null
+      - name: created_at_utc
+        tests:
+          - not_null
 
   - name: stg_orders
     description: "Model containing containing unique order level information"
@@ -48,6 +51,9 @@ models:
         description: primary key
         tests:
           - unique
+          - not_null
+      - name: created_at_utc
+        tests:
           - not_null
 
   - name: stg_address
@@ -67,7 +73,10 @@ models:
         tests:
           - unique
           - not_null
-  
+      - name: created_at_utc
+        tests:
+          - not_null
+
   - name: stg_products
     description: "Model containing name, price and quantity for each product_id"
     columns:

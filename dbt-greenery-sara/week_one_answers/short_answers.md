@@ -3,14 +3,15 @@
 select count(distinct user_id) from dbt_sara_g.stg_users;
 
 
-- On average, how many orders do we receive per hour? 16
+- On average, how many orders do we receive per hour? 8.16
 
-select 
-avg(count_orders) 
+select avg(count_orders) 
 from (
     select count(distinct order_id) as count_orders
-           , extract(hour from created_at_utc) 
-           from dbt_sara_g.stg_orders group by 2) a;
+    , date_trunc('hour',created_at_utc) 
+    from dbt_sara_g.stg_orders 
+    where created_at_utc group by 2
+) a;
 
 - On average, how long does an order take from being placed to being delivered?  3 days 22:13:10.504451
 
