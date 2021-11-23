@@ -1,0 +1,72 @@
+
+version: 2
+
+models:
+  - name: stg_users
+    description: "Model containing contact info about each user"
+    columns:
+      - name: user_guid
+        description: primary key
+        tests:
+          - unique
+          - not_null
+ 
+  - name: stg_orders
+    description: "Model containing containing unique order level information"
+    columns:
+      - name: order_id
+        description: primary key
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_address
+    description: "Model containing location info for each address_id"
+    columns:
+      - name: address_id
+        description: primary key
+        tests:
+          - unique
+          - not_null
+ 
+  - name: stg_events
+    description: "Model containing detailed user interactions on the website"
+    columns:
+      - name: event_id
+        description: primary key
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_products
+    description: "Model containing name, price and quantity for each product_id"
+    columns:
+      - name: product_id
+        description: primary key
+        tests:
+          - unique
+          - not_null
+      - name: price
+        tests:
+          - not_null
+          - positive_values
+      - name: quantity
+        tests:
+          - not_null
+
+  - name: stg_promos
+    description:  "Model containing promo types"
+    columns:
+      - name: promo_id
+        description: primary key
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_order_items
+    description: "Model containing order basket information: product_id and quantity"
+    columns:
+      - name: quantity
+        tests:
+          - not_null
+          - positive_values
