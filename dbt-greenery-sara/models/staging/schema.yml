@@ -19,6 +19,10 @@ models:
         tests:
           - unique
           - not_null
+      - name: status
+        tests:
+          - accepted_values:
+              values: ['shipped', 'pending', 'preparing', 'delivered']
 
   - name: stg_address
     description: "Model containing location info for each address_id"
