@@ -11,6 +11,10 @@ u.user_id
 , u.last_name
 , u.email
 , u.address_guid
+, u.address
+, u.zipcode
+, u.state
+, u.country
 , u.phone_number
 , u.created_at_utc
 , u.updated_at_utc
@@ -36,6 +40,10 @@ u.user_id
 , u.last_name
 , u.email
 , u.address_guid
+, u.address
+, u.zipcode
+, u.state
+, u.country
 , u.phone_number
 , u.created_at_utc
 , u.updated_at_utc

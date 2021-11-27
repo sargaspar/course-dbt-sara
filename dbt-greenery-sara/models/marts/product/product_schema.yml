@@ -1,0 +1,23 @@
+
+
+version: 2
+
+models:
+  - name: fact_events
+    description: "Contains all page view events from the events data"
+    columns:
+      - name: event_id
+        description: primary key
+        tests: 
+          - not_null
+  
+  - name: int_pageviews
+    description: "Contains aggreated count of page_events by day"
+    columns:
+      - name: user_guid
+        description: primary key
+        tests: 
+          - not_null
+
+          
+      
