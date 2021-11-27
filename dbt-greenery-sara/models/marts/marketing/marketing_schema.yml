@@ -2,7 +2,7 @@
 version: 2
 
 models:
-  - name: user_order_facts
+  - name: int_user_order_facts
     description: "Contains order information at the user level"
     columns:
       - name: user_guid
@@ -10,13 +10,21 @@ models:
         tests: 
           - unique
           - not_null
+        relationships:
+          to: ref('dim_users')
+          field: user_guid
       - name: count_orders  
         description: "Total orders placed from user"
         tests:
           - positive_values
       - name: avg_cost_order
-        description: "Avg cost order per user"
+        description: "Avg cost order per user: order total - discount/shipping"
         tests:
+          - positive_values
+      - name: avg_order_total
+        description: "Avg final order price"
+        tests:
+          - not_null
           - positive_values
       - name: avg_basket_size
         description: "Avg count of items per order"
@@ -38,5 +46,10 @@ models:
         description: "Count orders where status is delivered"
         tests:
           - positive_values
+      - name: orders_with_promo
+        description: "Count orders with promo"
+        tests:
+          - positive_values
           
+
       

@@ -22,6 +22,7 @@ u.user_id
 , MIN(o.order_created_at) as first_order_created_at_utc
 , MAX(o.order_created_at) as last_order_created_at_utc
 , COUNT(distinct order_id) as count_orders
+, AVG(o.order_total) as avg_order_total
 , AVG(o.total_order_cost) as avg_cost_order
 , SUM(o.quantity)/count(o.order_id) as avg_basket_size
 , SUM(CASE WHEN o.order_status = 'shipped' THEN 1 ELSE 0 END) AS count_orders_shipped

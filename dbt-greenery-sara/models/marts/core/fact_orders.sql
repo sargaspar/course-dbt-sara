@@ -5,11 +5,12 @@
 }}
 
 SELECT
-  o.order_id
+oi.order_id
   , o.user_guid
   , o.created_at_utc as order_created_at
   , o.delivered_at_utc as order_delivered_at
   , o.order_cost as total_order_cost
+  , o.order_total 
   , o.promo_id
   , o.shipping_service
   , o.shipping_cost
@@ -21,24 +22,26 @@ SELECT
   , oi.product_id 
   , oi.quantity
   , p.name as product_name
+  , p.price as product_price
 
-  -- , o.order_total - o.shipping_cost - o.order_cost as discount_applied (should this be a test?)
-  
-FROM {{ ref('stg_orders') }} o
-LEFT JOIN {{ ref('stg_order_items') }} oi
-  ON o.order_id = oi.order_id
-LEFT JOIN {{ ref('stg_promos') }} s
-  ON o.promo_id = s.promo_id
+FROM {{ ref('stg_order_items') }} oi
+LEFT JOIN {{ ref('stg_orders') }} o
+  ON oi.order_id = o.order_id
 LEFT JOIN {{ ref('stg_products') }} p
   ON oi.product_id = p.product_id
+LEFT JOIN {{ ref('stg_promos') }} s
+  ON s.promo_id = o.promo_id
+
+WHERE order_total > 0
 
 GROUP BY 
-o.order_id
+oi.order_id
   , o.user_guid
   , order_created_at
   , order_delivered_at
   , total_order_cost
   , o.promo_id
+  , o.order_total
   , o.shipping_service
   , o.shipping_cost
   , order_status
@@ -49,3 +52,4 @@ o.order_id
   , oi.product_id 
   , oi.quantity
   , product_name
+  , product_price

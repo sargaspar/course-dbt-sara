@@ -3,21 +3,61 @@
 version: 2
 
 models:
-  - name: fact_events
+  - name: dim_events
     description: "Contains all page view events from the events data"
     columns:
       - name: event_id
         description: primary key
         tests: 
           - not_null
-  
+          - unique
+        relationships:
+          to: ref('stg_events')
+          field: event_id
+      - name: session_id
+        tests: 
+          - not_null
+        relationships:
+          to: ref('stg_events')
+          field: session_id
+      - name: user_guid
+        tests: 
+          - not_null
+        relationships:
+          to: ref('stg_events')
+          field: user_guid
+
   - name: int_pageviews
     description: "Contains aggreated count of page_events by day"
     columns:
-      - name: user_guid
-        description: primary key
+      - name: session_id
+        description: primary_key
         tests: 
           - not_null
-
-          
-      
+      - name: user_guid
+        tests: 
+          - not_null
+        relationships: 
+          to: ref('stg_users')
+          field: user_guid
+      - name: count_delete_from_cart
+        tests:
+          - not_null
+      - name: count_delete_from_cart
+        tests:
+          - not_null
+      - name: count_checkout
+        tests:
+          - not_null
+      - name: count_page_view
+        tests:
+          - not_null
+      - name: count_add_to_cart
+        tests:
+          - not_null
+      - name: count_package_shipped
+        tests:
+          - not_null
+      - name: count_account_created
+        tests:
+          - not_null

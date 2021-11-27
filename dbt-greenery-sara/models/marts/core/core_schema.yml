@@ -10,6 +10,10 @@ models:
         tests:
           - unique
           - not_null
+        relationships:
+            to: ref('stg_users')
+            field: user_guid
+
       - name: age_customer
         description: days between creation of user and present
         tests:
@@ -23,6 +27,9 @@ models:
         tests:
           - unique
           - not_null
+        relationships:
+            to: ref('stg_products')
+            field: product_id
 
   - name: fact_orders
     description: "Model containing order x product-level information: contains one row per order x product combination,  including their price, promotion, time to delivery, etc"
@@ -31,3 +38,38 @@ models:
         description: primary key
         tests:
           - not_null
+        relationships:
+          to: ref('stg_orders')
+          field: order_id
+      - name: user_guid
+        relationships:  
+          to: ref('stg_users')
+          field: user_guid
+      - name: total_order_cost
+        tests: 
+          - not_null
+          - positive_values
+      - name: order_total
+        tests:  
+          - not_null
+          - positive_values
+      - name: promo_id
+        relationships: 
+          to: ref('stg_promos')
+          field: promo_id
+      - name: order_status
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['pending', 'preparing', 'shipped', 'delivered']
+      - name: quantity
+        tests: 
+          - not_null
+          - positive_values
+      - name: product_price
+        tests: 
+          - not_null
+          - positive_values
+      
+    
+            
