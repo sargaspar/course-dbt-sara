@@ -12,7 +12,7 @@ models:
           - not_null
  
   - name: stg_orders
-    description: "Model containing containing unique order level information"
+    description: "Model containing unique order level information"
     columns:
       - name: order_id
         description: primary key

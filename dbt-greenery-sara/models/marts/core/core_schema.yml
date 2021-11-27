@@ -1,0 +1,33 @@
+
+version: 2
+
+models:
+  - name: dim_users
+    description: "Model containing contact info about each user, including actual address"
+    columns:
+      - name: user_guid
+        description: primary key
+        tests:
+          - unique
+          - not_null
+      - name: age_customer
+        description: days between creation of user and present
+        tests:
+          - not_null
+
+  - name: dim_products
+    description: "Model containing Greenery's inventory: product_ids, name, quantity and price"
+    columns:
+      - name: product_id
+        description: primary key
+        tests:
+          - unique
+          - not_null
+
+  - name: fact_orders
+    description: "Model containing order x product-level information: contains one row per order x product combination,  including their price, promotion, time to delivery, etc"
+    columns:
+      - name: order_id
+        description: primary key
+        tests:
+          - not_null

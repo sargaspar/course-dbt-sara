@@ -13,6 +13,7 @@ SELECT
   , u.phone_number
   , u.created_at_utc
   , u.updated_at_utc
+  , NOW()-u.created_at_utc as age_customer
   , u.address_guid
   , a.zipcode
   , a.address

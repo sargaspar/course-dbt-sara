@@ -18,9 +18,10 @@ u.user_id
 , u.phone_number
 , u.created_at_utc
 , u.updated_at_utc
+, u.age_customer
 , MIN(o.order_created_at) as first_order_created_at_utc
 , MAX(o.order_created_at) as last_order_created_at_utc
-, COUNT(order_id) as count_orders
+, COUNT(distinct order_id) as count_orders
 , AVG(o.total_order_cost) as avg_cost_order
 , SUM(o.quantity)/count(o.order_id) as avg_basket_size
 , SUM(CASE WHEN o.order_status = 'shipped' THEN 1 ELSE 0 END) AS count_orders_shipped
@@ -47,4 +48,5 @@ u.user_id
 , u.phone_number
 , u.created_at_utc
 , u.updated_at_utc
+, u.age_customer 
 
