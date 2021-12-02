@@ -1,8 +1,11 @@
 SELECT
     order_id
-    , product_price
-    , quantity
+    , SUM(total_item_cost) as overall_total_item_cost
     , total_order_cost
     
 FROM {{ ref('fact_orders' )}}
-HAVING NOT(product_price*quantity = total_order_cost)
+GROUP BY 
+order_id
+, total_item_cost
+, total_order_cost
+HAVING NOT(overall_total_item_cost = total_order_cost)

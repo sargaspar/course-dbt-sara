@@ -14,3 +14,5 @@ SELECT
   , DATE(created_at_utc) as session_date_utc
   
 FROM {{ ref('stg_events') }} 
+
+

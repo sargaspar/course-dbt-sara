@@ -17,19 +17,15 @@ models:
         description: "Total orders placed from user"
         tests:
           - positive_values
-      - name: avg_cost_order
+      - name: avg_order_cost
         description: "Avg cost order per user: order total - discount/shipping"
         tests:
           - positive_values
-      - name: avg_order_total
-        description: "Avg final order price"
-        tests:
-          - not_null
-          - positive_values
-      - name: avg_basket_size
-        description: "Avg count of items per order"
+      - name: total_user_cost
+        description: "Total cost order per user"
         tests:
           - positive_values
+  
       - name: count_orders_shipped
         description: "Count orders where status is shipped"
         tests:

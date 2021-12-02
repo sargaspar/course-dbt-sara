@@ -19,21 +19,21 @@ u.user_id
 , u.created_at_utc
 , u.updated_at_utc
 , u.age_customer
+, COUNT(distinct o.order_guid) as count_orders
 , MIN(o.order_created_at) as first_order_created_at_utc
 , MAX(o.order_created_at) as last_order_created_at_utc
-, COUNT(distinct order_id) as count_orders
-, AVG(o.order_total) as avg_order_total
-, AVG(o.total_order_cost) as avg_cost_order
-, SUM(o.quantity)/count(o.order_id) as avg_basket_size
+, SUM(order_cost) as total_user_cost
+, AVG(o.order_cost) as avg_order_cost
 , SUM(CASE WHEN o.order_status = 'shipped' THEN 1 ELSE 0 END) AS count_orders_shipped
 , SUM(CASE WHEN o.order_status = 'pending' THEN 1 ELSE 0 END) AS count_orders_pending
 , SUM(CASE WHEN o.order_status = 'preparing' THEN 1 ELSE 0 END) AS count_orders_preparing
 , SUM(CASE WHEN o.order_status = 'delivered' THEN 1 ELSE 0 END) AS count_orders_delivered
-, SUM(CASE o.discount WHEN NULL THEN 0 ELSE 1 END) AS orders_with_promo
+, SUM(CASE o.promo_id WHEN NULL THEN 0 ELSE 1 END) AS orders_with_promo
 
-FROM {{ ref('fact_orders') }} o
-LEFT JOIN {{ ref('dim_users') }} u
-    on o.user_guid = u.user_guid
+FROM {{ ref('dim_users') }} u
+LEFT JOIN {{ ref('fct_orders') }} o
+  ON u.user_guid = o.user_guid 
+
 
 GROUP BY
 u.user_id

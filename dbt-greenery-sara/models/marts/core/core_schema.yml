@@ -31,10 +31,10 @@ models:
             to: ref('stg_products')
             field: product_id
 
-  - name: fact_orders
+  - name: fct_orders
     description: "Model containing order x product-level information: contains one row per order x product combination,  including their price, promotion, time to delivery, etc"
     columns:
-      - name: order_id
+      - name: order_guid
         description: primary key
         tests:
           - not_null
@@ -45,7 +45,7 @@ models:
         relationships:  
           to: ref('stg_users')
           field: user_guid
-      - name: total_order_cost
+      - name: order_cost
         tests: 
           - not_null
           - positive_values
@@ -62,11 +62,7 @@ models:
           - not_null
           - accepted_values:
               values: ['pending', 'preparing', 'shipped', 'delivered']
-      - name: quantity
-        tests: 
-          - not_null
-          - positive_values
-      - name: product_price
+      - name: shipping_cost
         tests: 
           - not_null
           - positive_values
