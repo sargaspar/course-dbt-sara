@@ -16,7 +16,7 @@ u.user_id
 , u.state
 , u.country
 , u.phone_number
-, u.created_at_utc
+, u.user_created_at
 , u.updated_at_utc
 , u.age_customer
 , COUNT(distinct o.order_guid) as count_orders
@@ -47,7 +47,7 @@ u.user_id
 , u.state
 , u.country
 , u.phone_number
-, u.created_at_utc
+, u.user_created_at
 , u.updated_at_utc
 , u.age_customer 
 

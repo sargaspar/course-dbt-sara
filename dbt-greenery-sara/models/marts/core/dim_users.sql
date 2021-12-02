@@ -11,9 +11,9 @@ SELECT
   , u.last_name
   , u.email
   , u.phone_number
-  , u.created_at_utc
+  , u.created_at_utc as user_created_at
   , u.updated_at_utc
-  , NOW()-u.created_at_utc as age_customer
+  , NOW()-u.created_at_utc as time_customer
   , u.address_guid
   , a.zipcode
   , a.address

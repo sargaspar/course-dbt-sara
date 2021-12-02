@@ -30,6 +30,9 @@ models:
         relationships:
             to: ref('stg_products')
             field: product_id
+      - name: price
+        tests:
+          - positive_values
 
   - name: fct_orders
     description: "Model containing order x product-level information: contains one row per order x product combination,  including their price, promotion, time to delivery, etc"

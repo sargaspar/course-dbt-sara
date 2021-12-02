@@ -8,7 +8,8 @@ SELECT
   user_guid
   , session_id
   , session_date_utc
-  , COUNT(distinct event_id) total_views
+  , min(event_created_at_utc) as first_event_created_at
+  , COUNT(distinct event_id) total_events
   , SUM(CASE WHEN event_type = 'delete_from_cart' THEN 1 ELSE 0 END) AS count_delete_from_cart
   , SUM(CASE WHEN event_type = 'checkout' THEN 1 ELSE 0 END) AS count_checkout
   , SUM(CASE WHEN event_type = 'page_view' THEN 1 ELSE 0 END) AS count_page_view
