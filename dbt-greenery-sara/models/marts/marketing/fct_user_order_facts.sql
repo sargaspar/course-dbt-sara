@@ -18,8 +18,7 @@ u.user_id
 , u.phone_number
 , u.user_created_at
 , u.updated_at_utc
-, u.time_customer
-, COUNT(distinct o.order_guid) as count_orders
+, COALESCE(COUNT(distinct o.order_guid),0) as count_orders
 , MIN(o.order_created_at) as first_order_created_at_utc
 , MAX(o.order_created_at) as last_order_created_at_utc
 , SUM(order_cost) as total_user_cost
@@ -48,6 +47,4 @@ u.user_id
 , u.country
 , u.phone_number
 , u.user_created_at
-, u.updated_at_utc 
-, u.time_customer
-
+, u.updated_at_utc

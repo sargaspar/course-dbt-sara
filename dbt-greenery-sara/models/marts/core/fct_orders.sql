@@ -33,6 +33,7 @@ WHERE order_total > 0
 GROUP BY 
   o.order_id
   , o.user_guid
+  , o.address_guid
   , order_created_at
   , order_delivered_at
   , order_cost

@@ -13,7 +13,6 @@ models:
         relationships:
             to: ref('stg_users')
             field: user_guid
-
       - name: age_customer
         description: days between creation of user and present
         tests:

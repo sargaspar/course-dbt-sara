@@ -17,7 +17,7 @@ SELECT
   , SUM(CASE WHEN event_type = 'account_created' THEN 1 ELSE 0 END) AS count_account_created
   , SUM(CASE WHEN event_type = 'checkout' THEN 1 ELSE 0 END)/COUNT(distinct event_id) as conversion_rate
 
-FROM {{ ref('fct_events') }}
+FROM {{ ref('dim_events') }}
 
 GROUP BY    
 product_guid
