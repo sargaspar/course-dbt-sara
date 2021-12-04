@@ -27,7 +27,7 @@ models:
           to: ref('stg_events')
           field: user_guid
 
-  - name: int_pageviews
+  - name: fct_pageviews
     description: "Contains aggreated count of page_events by day"
     columns:
       - name: session_id
@@ -40,24 +40,3 @@ models:
         relationships: 
           to: ref('stg_users')
           field: user_guid
-      - name: count_delete_from_cart
-        tests:
-          - not_null
-      - name: count_delete_from_cart
-        tests:
-          - not_null
-      - name: count_checkout
-        tests:
-          - not_null
-      - name: count_page_view
-        tests:
-          - not_null
-      - name: count_add_to_cart
-        tests:
-          - not_null
-      - name: count_package_shipped
-        tests:
-          - not_null
-      - name: count_account_created
-        tests:
-          - not_null

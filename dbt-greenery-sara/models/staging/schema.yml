@@ -24,7 +24,7 @@ models:
           - accepted_values:
               values: ['shipped', 'pending', 'preparing', 'delivered']
 
-  - name: stg_address
+  - name: stg_addresses
     description: "Model containing location info for each address_id"
     columns:
       - name: address_id

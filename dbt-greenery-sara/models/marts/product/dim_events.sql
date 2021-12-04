@@ -15,3 +15,4 @@ SELECT
   , split_part(page_url, '/', 5) as product_guid
 
 FROM {{ ref('stg_events') }} 
+
