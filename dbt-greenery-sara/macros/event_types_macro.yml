@@ -1,0 +1,9 @@
+version: 2
+
+macros:
+  - name: event_types
+    description: A macro that aggregates event types by session_id. 
+    arguments:
+      - name: even_types
+        type: string
+        description: Type of event
