@@ -68,6 +68,9 @@ models:
         tests: 
           - not_null
           - positive_values
+      - name: tracking_id
+        tests: 
+          - not_null
       
     
             

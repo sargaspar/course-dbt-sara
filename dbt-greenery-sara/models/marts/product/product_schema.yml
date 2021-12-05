@@ -30,13 +30,61 @@ models:
   - name: fct_pageviews
     description: "Contains aggreated count of page_events by day"
     columns:
-      - name: session_id
-        description: primary_key
+      - name: event_id
+        description: primary key
         tests: 
           - not_null
+          - unique
+        relationships:
+          to: ref('stg_events')
+          field: event_id
+      - name: session_id
+        tests: 
+          - not_null
+        relationships:
+          to: ref('stg_events')
+          field: session_id
       - name: user_guid
         tests: 
           - not_null
-        relationships: 
-          to: ref('stg_users')
+        relationships:
+          to: ref('stg_events')
           field: user_guid
+    
+  - name: int_checkout_sessions
+    description: "Model containing session_id and boolean for has_checkout"
+    columns:
+      - name: session_id
+        tests:
+          - not_null
+          - unique
+      
+  - name: int_sessions_product
+    description: "Model containing session_id and products interacted with"
+    columns: 
+      - name: session_id
+
+  - name: fct_conversion_products
+    description: "Model containing conversion rate for each product id"
+    columns:
+      - name: product_guid
+        tests: 
+          - not_null
+          - unique
+
+  - name: int_user_session_events
+    description: "Model containing aggregated events for each user and session"
+    columns:
+      - name: session_id
+        tests: 
+          - not_null
+        relationships:
+          to: ref('stg_events')
+          field: session_id
+      - name: user_guid
+        tests: 
+          - not_null
+        relationships:
+          to: ref('stg_events')
+          field: user_guid
+    

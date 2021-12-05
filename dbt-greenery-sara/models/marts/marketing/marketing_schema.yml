@@ -25,7 +25,6 @@ models:
         description: "Total cost order per user"
         tests:
           - positive_values
-  
       - name: count_orders_shipped
         description: "Count orders where status is shipped"
         tests:
