@@ -13,10 +13,7 @@ models:
         relationships:
             to: ref('stg_users')
             field: user_guid
-      - name: age_customer
-        description: days between creation of user and present
-        tests:
-          - not_null
+
 
   - name: dim_products
     description: "Model containing Greenery's inventory: product_ids, name, quantity and price"
@@ -68,9 +65,5 @@ models:
         tests: 
           - not_null
           - positive_values
-      - name: tracking_id
-        tests: 
-          - not_null
-      
     
             

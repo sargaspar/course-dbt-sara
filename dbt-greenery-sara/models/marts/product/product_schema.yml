@@ -57,7 +57,6 @@ models:
       - name: session_id
         tests:
           - not_null
-          - unique
       
   - name: int_sessions_product
     description: "Model containing session_id and products interacted with"
