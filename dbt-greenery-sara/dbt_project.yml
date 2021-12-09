@@ -27,4 +27,4 @@ models:
         - "{{ grant_select(role='reporting') }}"
   
 on-run-end:
-  - "grant usage on schema {{ schema }} to reporting"
+  - "GRANT USAGE on schema {{ schema }} to reporting"
