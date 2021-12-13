@@ -1,5 +1,5 @@
 {% macro sessions_with_checkout() %}
-WITH session_with_checkout AS (
+WITH sessions_with_checkout AS (
     SELECT 
         session_id,
         MAX(CASE WHEN event_type='checkout' THEN 1 ELSE 0 END) has_checkout

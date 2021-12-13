@@ -1,0 +1,28 @@
+version: 2
+
+exposures:
+  - name: Product Funnel by date
+    description: >
+      Greenery funnel by date
+    type: dashboard
+    maturity: low
+
+    owner:
+      name: Sara Gaspar
+      email: sara.gaspar@ly.st
+    depends_on:
+      - ref('int_sessions_for_funnel')
+
+
+  - name: Product Funnel overall
+    description: >
+      Greenery overall funnel
+    type: dashboard
+    maturity: low
+
+    owner:
+      name: Sara Gaspar
+      email: sara.gaspar@ly.st
+    depends_on:
+      - ref('funnel')
+    
