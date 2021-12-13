@@ -7,7 +7,7 @@ We've created two funnel exposures, one that tells us our funnel overall and one
 
 We've taken as a base sessions_with_pageviews but that could easily get changed to the overall count of sessions in Greenery.
 
-| percent_sessions_with_pageview | percent_pageview_sessions_with_addtocart | percent_addtocart_sessions_with_checkout | percent_pageview_sessions_with_checkout |
+| sessions_with_pageview | pageview_sessions_with_addtocart | addtocart_sessions_with_checkout | pageview_sessions_with_checkout |
 | --- | --- | --- | --- |
 | 0.75974372664175120128 | 0.62473647224174279691 | 0.44994375703037120360 | 0.28109627547434996486 |
 
